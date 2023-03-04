@@ -1,6 +1,5 @@
 import React from 'react'
 import beans from '../../assets/about/beans.png'
-import { Link } from 'react-router-dom'
 import { Wrapper,FlexBox, LinkBox } from './Styles'
 
 const Navbar = () => {

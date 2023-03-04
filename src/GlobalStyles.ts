@@ -11,5 +11,6 @@ export const GlobalStyles=createGlobalStyle`
     font-family: 'Fraunces', serif;
     padding:0 50px;
     font-size:14px;
+    background-color:#F2F2F2;
     }
 `

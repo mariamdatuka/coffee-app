@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import bgimage from '../../assets/home/desktop/image-hero-coffeepress.jpg'
 
+export const MainWrapper=styled.div`
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+`
 export const Wrapper=styled.div`
    background-image: url(${bgimage});
    height:100vh;
    background-position:center;
    background-repeat:no-repeat;
    background-size: cover;
-   margin-bottom:20px;
+   margin-bottom:50px;
    border-radius:10px;
 `
 export const Container=styled.div`
@@ -30,22 +36,115 @@ export const Container=styled.div`
    font-family:'Barlow',serif;
    line-height:1.5;
  }
+`
+export const CoffeeBox=styled.div`
+  
+`
+export const GridContainer=styled.div`
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  place-items:center;
+  column-gap:15px;
+  margin-bottom:30px;
+  position:relative;
+`
+export const GridItem=styled.div`
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:20px;
 
- & button{
+ & img{
    width:200px;
-   border:none;
-   height:55px;
-   border-radius:6px;
-   cursor:pointer;
-   background-color:#0E8784;
-   color:#fff;
-   font-weight:bold;
-   font-family:'Fraunces', serif;
-   font-size:16px;
-   transition:all 0.3s ease-in-out;
  }
 
- & button:hover{
-   background-color:#66D2CF;
+ & h3{
+   padding-top:10px;
+   color:#333D4B;
+   font-size:24px;
+   font-weight:bold;
  }
+
+ & p{
+   font-family:'Barlow',serif;
+   font-size:16px;
+   color:#333D4B;
+   width:250px;
+   text-align:center;
+   line-height:1.5;
+ }
+`
+export const WhyUs=styled.div`
+  width:1100px;
+  height:500px;
+  background-color:#333D4B;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin:150px 0;
+  gap:30px;
+  position:absolute;
+  top:200%;
+  z-index:1;
+
+  & h4{
+   padding-top:60px;
+    font-size:38px;
+    font-weight:900;
+    color:#fff;
+  }
+
+  & p{
+     width:530px;
+     text-align:center;
+     color:#83888F;
+     font-family:'Barlow',serif;
+     font-size:16px;
+     line-height:1.5;
+  }
+`
+export const GridContainer2=styled.div`
+   display:grid;
+   grid-template-columns:1fr 1fr 1fr;
+   column-gap:20px;
+   place-items:center;
+   z-index:999;
+   margin-top:300px;
+`
+export const GridItem2=styled.div`
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  width:330px;
+  height:350px;
+  border-radius:8px;
+  background-color:#0E8784;
+
+  & h5{
+   font-size:24px;
+   font-weight:bold;
+   padding:40px 0 20px 0;
+   color:#fff;
+  }
+
+  & p{
+   width:230px;
+   text-align:center;
+   font-family:'Barlow', serif;
+   color:#FEFCF7;
+   line-height:1.5;
+   }
+`
+export const StepsCont=styled.div`
+  margin-top:100px;
+  align-self:flex-start;
+
+  & h6{
+    font-size:24px;
+    color:#83888F;
+    margin-bottom:50px;
+  }
 `
