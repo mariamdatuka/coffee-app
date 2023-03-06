@@ -94,7 +94,6 @@ export const Home = () => {
       <Button text='create your plan' onClick={handleClick}/>
     </StepsCont> 
   </MainWrapper> 
-  <Footer/>
     </> 
   )
 }
