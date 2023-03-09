@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import bg2 from '../../assets/plan/desktop/image-hero-blackcup.jpg';
 
-
 export const Wrapper=styled.div`
    background-image: url(${bg2});
    height:70vh;
@@ -33,3 +32,30 @@ export const Container=styled.div`
  }
 `
 
+export const GridContainer=styled.div`
+     display:grid;
+     grid-template-columns:repeat(3,1fr);
+     place-items:center;
+`
+export const GridItem=styled.div`
+     display:flex;
+     align-items:center;
+     flex-direction:column;
+     justify-content:center;
+     gap:20px;
+     width:225px;
+     height:250px;
+     padding:10px;
+`
+export const Container2=styled.div`
+    
+    & button{
+      width:700px;
+      height:50px;
+      border:none;
+      font-size:38px;
+      color:#83888F;
+      font-family:inherit;
+      cursor:pointer;
+    }
+`
