@@ -35,20 +35,36 @@ export const Container=styled.div`
 export const GridContainer=styled.div`
      display:grid;
      grid-template-columns:repeat(3,1fr);
-     place-items:center;
+     column-gap:10px;
 `
 export const GridItem=styled.div`
      display:flex;
-     align-items:center;
      flex-direction:column;
      justify-content:center;
      gap:20px;
-     width:225px;
+     width:200px;
      height:250px;
      padding:10px;
+     background-color:#F4F1EB;
+     border-radius:8px;
+     cursor:pointer;
+
+     & h3{
+         color:#333D4B;
+         font-size:24px;
+     }
+
+     & p{
+      font-size:16px;
+      font-family:'Barlow', serif;
+      color:#333D4B;
+      width:170px;
+     }
 `
 export const Container2=styled.div`
-    
+     display:flex;
+     flex-direction:column;
+     margin:0 200px;
     & button{
       width:700px;
       height:50px;
@@ -58,4 +74,14 @@ export const Container2=styled.div`
       font-family:inherit;
       cursor:pointer;
     }
+`
+
+export const ListBox=styled.div`
+    display:flex;
+    flex-direction:column;
+`
+
+export const ListItem=styled.div`
+ display:flex;
+ gap:10px;
 `
