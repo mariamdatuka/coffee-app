@@ -79,9 +79,23 @@ export const Container2=styled.div`
 export const ListBox=styled.div`
     display:flex;
     flex-direction:column;
+    gap:10px;
 `
 
 export const ListItem=styled.div`
  display:flex;
  gap:10px;
+ width:255px;
+ padding:10px;
+ border-bottom:1px solid  #83888F;
+ cursor:pointer;
+
+ & p {
+  color: #83888F;
+  font-size:24px;
+}
+& span {
+  color: #83888F;
+  font-size:24px;
+}
 `

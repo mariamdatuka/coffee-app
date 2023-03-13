@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Steps from '../../components/Steps/Steps';
 import {Container,Wrapper,GridContainer,GridItem,Container2, ListBox, ListItem} from './Styles';
-
+import { Options } from '../../Types';
 const questions=[
     {
         id:1,
@@ -63,14 +63,22 @@ const questions=[
     question:'want us to grind them?',
     options:[
         {
-            name:'yes',
-            descr:'ok'
+            name:'Wholebean',
+            descr:'Best choice if you cherish the full sensory experience'
         },
+        {
+          name:'Filter',
+          descr:'For drip or pour-over coffee methods such as V60 or Aeropress'
+       },
+       {
+        name:'Cafetiere',
+        descr:'Course ground beans specially suited for french press coffee'
+      },
     ]
 },
  
 {
-  id:4,
+  id:5,
   question:'How often should we deliver',
   options:[
       {
@@ -92,22 +100,42 @@ const questions=[
 
 const Plan = () => {
     const [active,setActive]=useState<number|null>(null);
-    const [activeList,setActiveList]=useState<number|null>(null);
-    
-    const handleClick=(id:number)=>{
-        if(id===active){
-          setActive(null)
-        }else{
-          setActive(id)
-        }
-    }
+    const [selectedOption, setSelectedOption] = useState<Options[]>([]);
+    const [color,setColor]=useState<boolean>(false);
 
-    const handleList=(id:number)=>{
-      const question = questions.find((q) => q.id === id);
-      if (question) {
-        setActive(question.id);
-      }
-    }
+    
+    
+    const handleClick = (id:number, toggle = true) => {
+      setActive(toggle && id === active ? null : id);
+    };
+    
+    const handleListItemClick = (id:number) => {
+      handleClick(id, false);
+    };
+
+    const handleOptionsClick = (questionId:number, optionName:string) => {
+      setSelectedOption((prevSelectedOptions) => {
+        const index = prevSelectedOptions.findIndex(
+          (item) => item.questionId === questionId
+        );
+        if (index === -1) {
+          // The question has not been answered before
+          return [
+            ...prevSelectedOptions,
+            {
+              questionId,
+              selectedOption: optionName,
+            },
+          ];
+        } else {
+          const updatedSelectedOptions = [...prevSelectedOptions];
+          updatedSelectedOptions[index].selectedOption = optionName;
+          return updatedSelectedOptions;
+        }
+      });
+    };
+  
+ 
   
   return (
     <>
@@ -118,24 +146,25 @@ const Plan = () => {
         </Container>
       </Wrapper>
       <Steps/>
+      <div style={{display:'flex', gap:'10px'}}>
           <ListBox>
-            <ListItem>
+            <ListItem onClick={() => handleListItemClick(1)}>
                 <span>01</span>
                 <p>Preferences</p>
             </ListItem>
-            <ListItem>
+            <ListItem onClick={() => handleListItemClick(2)}>
                 <span>02</span>
                 <p>Type</p>
             </ListItem>
-            <ListItem>
+            <ListItem onClick={() => handleListItemClick(3)}>
                 <span>03</span>
                 <p>Quantity</p>
             </ListItem>
-            <ListItem>
+            <ListItem onClick={() => handleListItemClick(4)}>
                 <span>04</span>
                 <p>Options</p>
             </ListItem>
-            <ListItem>
+            <ListItem onClick={() => handleListItemClick(5)}>
                 <span>05</span>
                 <p>Delivery</p>
             </ListItem>
@@ -150,7 +179,7 @@ const Plan = () => {
                   {
                     active===item.id&&
                     <GridContainer>{item.options.map((itm,index)=>(
-                      <GridItem  key={index}>
+                      <GridItem  key={index} onClick={() => handleOptionsClick(item.id,itm.name)}>
                          <h3>{itm.name}</h3>
                          <p>{itm.descr}</p>
                       </GridItem>
@@ -159,7 +188,14 @@ const Plan = () => {
               </Container2>
             ))
            }
+            {selectedOption && selectedOption.map((item,index)=>(
+               <div key={index}>
+                  {item.selectedOption}
+               </div>
+           ))
+           }
       </div>
+    </div>
     </>
   )
 }
