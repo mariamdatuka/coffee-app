@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { BtnProps } from '../../Types'
 
-const Button = ({text,onClick}:BtnProps) => {
+const Button = ({text,onClick,style}:BtnProps) => {
 
   return (
     <>
-     <MainButton onClick={onClick}>
+     <MainButton onClick={onClick} style={style}>
        {text}
      </MainButton>
     </>

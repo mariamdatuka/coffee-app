@@ -73,6 +73,7 @@ export const Container2=styled.div`
       color:#83888F;
       font-family:inherit;
       cursor:pointer;
+      text-align:left;
     }
 `
 
@@ -94,8 +95,33 @@ export const ListItem=styled.div`
   color: #83888F;
   font-size:24px;
 }
+
 & span {
   color: #83888F;
   font-size:24px;
 }
+`
+
+export const Summary=styled.div`
+   width:670px;
+   height:200px;
+   padding:30px;
+   border-radius:10px;
+   margin-top:100px;
+   margin-bottom:30px;
+   background-color: #333D4B;
+
+ & h4{
+  font-family:'Barlow', serif;
+  font-size:16px;
+  color:#FFFFFF;
+ }
+ & p{
+  margin-top:30px;
+  font-size:24px;
+  color:#fff;
+ }
+ & p span{
+  color:#0E8784;
+ }
 `

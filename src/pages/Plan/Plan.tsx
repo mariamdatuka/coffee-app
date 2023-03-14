@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Steps from '../../components/Steps/Steps';
-import {Container,Wrapper,GridContainer,GridItem,Container2, ListBox, ListItem} from './Styles';
+import {Container,Wrapper,GridContainer,GridItem,Container2, ListBox, ListItem,Summary} from './Styles';
 import { Options } from '../../Types';
+import Button from '../../components/Button/Button';
 const questions=[
     {
         id:1,
@@ -101,15 +102,18 @@ const questions=[
 const Plan = () => {
     const [active,setActive]=useState<number|null>(null);
     const [selectedOption, setSelectedOption] = useState<Options[]>([]);
-    const [color,setColor]=useState<boolean>(false);
+    const [isCapsulesSelected, setIsCapsulesSelected] = useState<boolean>(false);
+    const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
-    
-    
+  
     const handleClick = (id:number, toggle = true) => {
       setActive(toggle && id === active ? null : id);
     };
     
     const handleListItemClick = (id:number) => {
+      if (id === 4 && selectedOption.some(option => option.selectedOption === 'Capsules')) {
+        return;
+    }
       handleClick(id, false);
     };
 
@@ -133,10 +137,28 @@ const Plan = () => {
           return updatedSelectedOptions;
         }
       });
+
+      if(questionId===1 && optionName==='Capsules'){
+        setIsCapsulesSelected(true);
+      }else{
+        setIsCapsulesSelected(false);
+      }
     };
   
+    const handleButtonClick=()=>{
+
+    }
+
+    const disapleButton=()=>{
+      if(selectedOption.length===5 || selectedOption.length===4){
+          setIsDisabled(false);
+      }
+    }
+
+ useEffect(()=>{
+   disapleButton();
+ }, [selectedOption])
  
-  
   return (
     <>
       <Wrapper>
@@ -154,26 +176,30 @@ const Plan = () => {
             </ListItem>
             <ListItem onClick={() => handleListItemClick(2)}>
                 <span>02</span>
-                <p>Type</p>
+                <p>Bean Type</p>
             </ListItem>
             <ListItem onClick={() => handleListItemClick(3)}>
                 <span>03</span>
                 <p>Quantity</p>
             </ListItem>
-            <ListItem onClick={() => handleListItemClick(4)}>
+            <ListItem onClick={() => handleListItemClick(4)}
+              style={{ opacity: isCapsulesSelected ? 0.5 : 1, pointerEvents: isCapsulesSelected ? "none" : "auto" }}>
                 <span>04</span>
-                <p>Options</p>
+                <p>Grind Options</p>
             </ListItem>
             <ListItem onClick={() => handleListItemClick(5)}>
                 <span>05</span>
-                <p>Delivery</p>
+                <p>Deliveries</p>
             </ListItem>
           </ListBox>
             <div>
             {
             questions.map((item)=>(
                 <Container2 key={item.id}>
-                  <button onClick={()=>handleClick(item.id)}>
+                  <button onClick={()=>handleClick(item.id)}
+                   disabled={item.id === 4 && selectedOption[0]?.selectedOption.includes('Capsules')}
+                   style={{opacity:item.id === 4 && selectedOption[0]?.selectedOption.includes('Capsules')?0.5:1}}
+                   >
                     {item.question}
                   </button>
                   {
@@ -188,14 +214,16 @@ const Plan = () => {
               </Container2>
             ))
            }
-            {selectedOption && selectedOption.map((item,index)=>(
-               <div key={index}>
-                  {item.selectedOption}
-               </div>
-           ))
-           }
-      </div>
-    </div>
+        <Summary>
+           <h4>Order Summary</h4>
+           <p>"I drink my coffee using <span>{selectedOption[0]?.selectedOption}</span>, with a <span>{selectedOption[1]?.selectedOption}</span> type of bean, sent to me <span>{selectedOption[3]?.selectedOption}</span>"</p>
+        </Summary>
+        <Button text='create plan' onClick={handleButtonClick} 
+                style={{opacity:isDisabled?0.3:1,
+                pointerEvents: isDisabled ? "none" : "auto" }}
+                />
+         </div>
+       </div>
     </>
   )
 }
