@@ -3,7 +3,10 @@ import Steps from '../../components/Steps/Steps';
 import {Container,Wrapper,GridContainer,GridItem,Container2, ListBox, ListItem,Summary} from './Styles';
 import { Options } from '../../Types';
 import Button from '../../components/Button/Button';
-const questions=[
+import Modal from '../../components/Modal/Modal';
+import { Question } from '../../Types';
+
+const questions:Question[]=[
     {
         id:1,
         question:'How do you drink your coffee?',
@@ -104,6 +107,7 @@ const Plan = () => {
     const [selectedOption, setSelectedOption] = useState<Options[]>([]);
     const [isCapsulesSelected, setIsCapsulesSelected] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
+    const [modal, setModal] = useState<boolean>(false);
 
   
     const handleClick = (id:number, toggle = true) => {
@@ -146,7 +150,7 @@ const Plan = () => {
     };
   
     const handleButtonClick=()=>{
-
+          setModal(true);
     }
 
     const disapleButton=()=>{
@@ -222,6 +226,11 @@ const Plan = () => {
                 style={{opacity:isDisabled?0.3:1,
                 pointerEvents: isDisabled ? "none" : "auto" }}
                 />
+           {
+            modal && <>
+              <Modal setModal={setModal} selectedOption={selectedOption}/>
+            </>
+           }     
          </div>
        </div>
     </>
