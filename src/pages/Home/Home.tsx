@@ -10,6 +10,7 @@ import gift from '../../assets/home/desktop/icon-gift.svg';
 import truck from '../../assets/home/desktop/icon-truck.svg';
 import Steps from '../../components/Steps/Steps'
 import Button from '../../components/Button/Button'
+import { useNavigate } from 'react-router-dom'
 
 
 const collectionData=[
@@ -36,9 +37,10 @@ const collectionData=[
 ]
 
 export const Home = () => {
+   const navigate=useNavigate();
 
-  const handleClick=(e:any)=>{
-    console.log(e.target.value);
+  const handleClick=()=>{
+     navigate('/createplan')
   }
 
   return (

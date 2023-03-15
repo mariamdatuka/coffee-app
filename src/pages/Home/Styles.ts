@@ -46,7 +46,6 @@ export const GridContainer=styled.div`
   place-items:center;
   column-gap:15px;
   margin-bottom:30px;
-  position:relative;
 `
 export const GridItem=styled.div`
  display:flex;
@@ -85,7 +84,7 @@ export const WhyUs=styled.div`
   margin:150px 0;
   gap:30px;
   position:absolute;
-  top:200%;
+  top:155%;
   z-index:1;
 
   & h4{
@@ -111,6 +110,7 @@ export const GridContainer2=styled.div`
    place-items:center;
    z-index:999;
    margin-top:300px;
+   position:relative;
 `
 export const GridItem2=styled.div`
   display:flex;
