@@ -109,6 +109,7 @@ const Plan = () => {
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
     const [modal, setModal] = useState<boolean>(false);
     const [totalPrices, setTotalPrices]=useState<number>(0)
+    const [currentQuestion, setCurrentQuestion] = useState<number>(0)
 
    const calculateTotalPrice=()=>{
          const option=selectedOption.some((item)=>item.selectedOption==='250g');
@@ -273,7 +274,11 @@ const Plan = () => {
            }
         <Summary>
            <h4>Order Summary</h4>
-           <p>"I drink my coffee using <span>{selectedOption[0]?.selectedOption}</span>, with a <span>{selectedOption[1]?.selectedOption}</span> type of bean, <span>{selectedOption[2]?.selectedOption}</span> sent to me <span>{selectedOption[4]?.questionId===5?`${selectedOption[4].selectedOption}`:''}</span>"</p>
+           <p>"I drink my coffee using <span>{selectedOption[0]?.selectedOption}</span>, with a <span>{selectedOption[1]?.selectedOption}</span> type of bean, <span>{selectedOption[2]?.selectedOption}</span> sent to me <span>{selectedOption[4]?.questionId===5
+           ?`${selectedOption[4].selectedOption}`
+           : selectedOption[3]?.questionId===5
+           ? `${selectedOption[3].selectedOption}`
+           :''}</span>"</p>
         </Summary>
         <Button text='create plan' onClick={handleButtonClick} 
                 style={{opacity:isDisabled?0.3:1,

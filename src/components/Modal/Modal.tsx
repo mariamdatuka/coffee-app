@@ -18,7 +18,12 @@ const Modal = ({setModal, selectedOption, totalPrices}:Props) => {
            <h3>Order Summary</h3>
            <Summary>I drink my coffee using  <span>{selectedOption[0]?.selectedOption}</span>
             with a <span>{selectedOption[1]?.selectedOption}</span> type of bean.
-           <span>{selectedOption[2]?.selectedOption} {selectedOption[3]?.questionId===4?`ground ala ${selectedOption[3].selectedOption}`:''}</span>, sent to me <span>{selectedOption[4]?.selectedOption}</span></Summary>
+           <span>{selectedOption[2]?.selectedOption} {selectedOption[3]?.questionId===4?`ground ala ${selectedOption[3].selectedOption}`:''}</span>, sent to me 
+           <span>{selectedOption[4]?.questionId===5
+           ?`${selectedOption[4].selectedOption}`
+           : selectedOption[3]?.questionId===5
+           ? `${selectedOption[3].selectedOption}`
+           :''}</span>"</Summary>
            <p>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout. </p>
          <PriceBox>
              <h2>${totalPrices}/mo</h2>
