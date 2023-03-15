@@ -72,8 +72,7 @@ export const Home = () => {
     <WhyUs>
         <h4>Why choose us?</h4>
         <p>A large part of our role is choosing which particular     coffees will be   featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.</p>
-    </WhyUs>
-    <GridContainer2>
+        <GridContainer2>
        <GridItem2>
            <img src={beans} alt='beans'/>
            <h5>Best Quality</h5>
@@ -90,6 +89,8 @@ export const Home = () => {
            <p>We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.</p>
        </GridItem2>
     </GridContainer2>
+    </WhyUs>
+    
     <StepsCont> 
       <h6>How it works</h6>
       <Steps/>

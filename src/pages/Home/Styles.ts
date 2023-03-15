@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import bgimage from '../../assets/home/desktop/image-hero-coffeepress.jpg'
+import bgimage2 from '../../assets/about/desktop/bg-quality.png'
 
 export const MainWrapper=styled.div`
   display:flex;
@@ -76,15 +77,16 @@ export const GridItem=styled.div`
 export const WhyUs=styled.div`
   width:1100px;
   height:500px;
-  background-color:#333D4B;
+  background-image:url(${bgimage2});
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: cover;
   border-radius:10px;
   display:flex;
   flex-direction:column;
   align-items:center;
   margin:150px 0;
   gap:30px;
-  position:absolute;
-  top:155%;
   z-index:1;
 
   & h4{
@@ -109,8 +111,7 @@ export const GridContainer2=styled.div`
    column-gap:20px;
    place-items:center;
    z-index:999;
-   margin-top:300px;
-   position:relative;
+   margin-top:50px;
 `
 export const GridItem2=styled.div`
   display:flex;
