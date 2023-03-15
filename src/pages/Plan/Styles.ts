@@ -64,7 +64,7 @@ export const GridItem=styled.div`
 export const Container2=styled.div`
      display:flex;
      flex-direction:column;
-     margin:0 200px;
+     margin-left:100px;
     & button{
       width:700px;
       height:50px;

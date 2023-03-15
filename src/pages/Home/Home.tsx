@@ -10,7 +10,7 @@ import gift from '../../assets/home/desktop/icon-gift.svg';
 import truck from '../../assets/home/desktop/icon-truck.svg';
 import Steps from '../../components/Steps/Steps'
 import Button from '../../components/Button/Button'
-import Footer from '../../components/Footer/Footer'
+
 
 const collectionData=[
   {

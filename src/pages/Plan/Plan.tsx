@@ -108,8 +108,60 @@ const Plan = () => {
     const [isCapsulesSelected, setIsCapsulesSelected] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
     const [modal, setModal] = useState<boolean>(false);
+    const [totalPrices, setTotalPrices]=useState<number>(0)
 
+   const calculateTotalPrice=()=>{
+         const option=selectedOption.some((item)=>item.selectedOption==='250g');
+         const option2=selectedOption.some((item)=>item.selectedOption==='500g');
+         const option3=selectedOption.some((item)=>item.selectedOption==='1000g');
+         
+         const everyWeek=selectedOption.some((item)=>item.selectedOption==='Every Week')
+         const every2Weeks=selectedOption.some((item)=>item.selectedOption==='Every 2 weeks')
+         const everyMonth=selectedOption.some((item)=>item.selectedOption==='Every Month')
+       
+         //prices for 250G choice
+         if (everyWeek && option){
+            const totalPricePerWeek=7.20*4;
+            setTotalPrices(totalPricePerWeek);
+         }
+         if (every2Weeks && option){
+          const totalPricePerWeek=7.20*2;
+          setTotalPrices(totalPricePerWeek);
+       }
+         if (everyMonth && option){
+        const totalPricePerWeek=12.00;
+        setTotalPrices(totalPricePerWeek);
+     }
+
+      //prices for 500G choice
+      if (everyWeek && option2){
+        const totalPricePerWeek=13*4;
+        setTotalPrices(totalPricePerWeek);
+     }
+     if (every2Weeks && option2){
+      const totalPricePerWeek=17.50*2;
+      setTotalPrices(totalPricePerWeek);
+   }
+     if (everyMonth && option2){
+    const totalPricePerWeek=22.00;
+    setTotalPrices(totalPricePerWeek);
+ }
   
+  //prices for 1000G
+  if (everyWeek && option3){
+    const totalPricePerWeek=22*4;
+    setTotalPrices(totalPricePerWeek);
+   }
+  if (every2Weeks && option3){
+    const totalPricePerWeek=32*2;
+    setTotalPrices(totalPricePerWeek);
+   }
+  if (everyMonth && option3){
+   const totalPricePerWeek=42.00;
+   setTotalPrices(totalPricePerWeek);
+  }
+ }
+ 
     const handleClick = (id:number, toggle = true) => {
       setActive(toggle && id === active ? null : id);
     };
@@ -151,6 +203,7 @@ const Plan = () => {
   
     const handleButtonClick=()=>{
           setModal(true);
+          calculateTotalPrice();
     }
 
     const disapleButton=()=>{
@@ -220,7 +273,7 @@ const Plan = () => {
            }
         <Summary>
            <h4>Order Summary</h4>
-           <p>"I drink my coffee using <span>{selectedOption[0]?.selectedOption}</span>, with a <span>{selectedOption[1]?.selectedOption}</span> type of bean, sent to me <span>{selectedOption[3]?.selectedOption}</span>"</p>
+           <p>"I drink my coffee using <span>{selectedOption[0]?.selectedOption}</span>, with a <span>{selectedOption[1]?.selectedOption}</span> type of bean, <span>{selectedOption[2]?.selectedOption}</span> sent to me <span>{selectedOption[4]?.questionId===5?`${selectedOption[4].selectedOption}`:''}</span>"</p>
         </Summary>
         <Button text='create plan' onClick={handleButtonClick} 
                 style={{opacity:isDisabled?0.3:1,
@@ -228,7 +281,7 @@ const Plan = () => {
                 />
            {
             modal && <>
-              <Modal setModal={setModal} selectedOption={selectedOption}/>
+              <Modal setModal={setModal} selectedOption={selectedOption} totalPrices={totalPrices}/>
             </>
            }     
          </div>

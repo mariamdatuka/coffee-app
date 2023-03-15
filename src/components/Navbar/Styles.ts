@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper=styled.div`
   display:flex;
@@ -19,18 +20,17 @@ export const FlexBox=styled.div`
 export const LinkBox=styled.div`
  display:flex;
  gap:10px;
+`
 
- & p{
+export const StyledLink=styled(Link)`
+    text-decoration:none;
     font-size:12px;
     font-family:'Barlow',serif;
     font-weight:bold;
     color:#83888F;
     cursor:pointer;
     transition: all 0.3s ease-in-out;
-
- }
-
- & p:hover{
+    &:hover{
     color:#000;
  }
 `

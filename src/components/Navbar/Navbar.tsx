@@ -1,6 +1,7 @@
 import React from 'react'
 import beans from '../../assets/about/beans.png'
-import { Wrapper,FlexBox, LinkBox } from './Styles'
+import { Wrapper,FlexBox, LinkBox, StyledLink } from './Styles'
+
 
 const Navbar = () => {
   return (
@@ -11,9 +12,9 @@ const Navbar = () => {
          <h1>coffeeroasters</h1>
       </FlexBox>
       <LinkBox>
-         <p>HOME</p>
-         <p>ABOUT US</p>
-         <p>CREATE YOUR PLAN</p>
+         <StyledLink to='/'>HOME</StyledLink>
+         <StyledLink to='/about'>ABOUT US</StyledLink>
+         <StyledLink to='/createplan'>CREATE YOUR PLAN</StyledLink>
       </LinkBox>
     </Wrapper> 
     </>

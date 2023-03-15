@@ -1,6 +1,7 @@
 import React from 'react'
 import {Wrapper,CircleContainer,Circle,Line, GridContainer,GridItem} from './Styles'
 
+
 const Steps = () => {
   return (
     <>
