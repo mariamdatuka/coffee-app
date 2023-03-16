@@ -109,7 +109,7 @@ const Plan = () => {
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
     const [modal, setModal] = useState<boolean>(false);
     const [totalPrices, setTotalPrices]=useState<number>(0)
-    const [currentQuestion, setCurrentQuestion] = useState<number>(0)
+   
 
    const calculateTotalPrice=()=>{
          const option=selectedOption.some((item)=>item.selectedOption==='250g');
